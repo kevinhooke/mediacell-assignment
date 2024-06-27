@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 import json
 
 # TODO: update this so we can initialize from a passed file name to support tests
@@ -7,6 +8,7 @@ with open('./actions.json') as json_data:
 
 def create_app():
     app = Flask(__name__)
+    cors = CORS(app)
     return app
 
 app = create_app()
