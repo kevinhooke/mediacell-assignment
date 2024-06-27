@@ -9,3 +9,8 @@ def test_get_all(client):
     response = client.get("/actions")
     assert response.status_code == 200
     assert b'{"actions":[{"codeword":5001,"id":"alert"},{"codeword":5002,"id":"thanks"}]}' in response.data
+
+def test_get_by_codeword(client):
+    response = client.get("/actions/codeword/5001")
+    assert response.status_code == 200
+    assert b'{"actions":[{"codeword":5001,"id":"alert"}]}' in response.data
