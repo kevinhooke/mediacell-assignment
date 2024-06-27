@@ -25,7 +25,27 @@ def get_action_by_codeword(codeword):
         if codeword != "":
             codeword = int(codeword)
             result = [action for action in actions['actions'] if(action['codeword'] == codeword)]
-            print(result)
+
+            if not result:
+                result = app.response_class(
+                    response=json.dumps({ "status" : 404, "message" : "Not found"}),
+                    status=404,
+                    mimetype='application/json')
+        else:
+            result = app.response_class(
+                    response=json.dumps({ "status" : 404, "message" : "Expected parameter missing"}),
+                    status=404,
+                    mimetype='application/json')
+        return result
+
+@app.route('/actions/action/<actionid>', methods=['GET'])
+def get_action_by_actionid(actionid):
+    """ Returns actions by matching action id
+    """
+    if actionid == request.view_args['actionid']:
+        if actionid != "":
+            result = [action for action in actions['actions'] if(action['id'] == actionid)]
+
             if not result:
                 result = app.response_class(
                     response=json.dumps({ "status" : 404, "message" : "Not found"}),
