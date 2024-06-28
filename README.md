@@ -18,7 +18,7 @@
 Frontend is running on port 8000
 
 
-## To build and run: mediacell-react-frontend
+## To build and run: mediacell-rest-api
 
 - cd mediacell-rest-api
 
