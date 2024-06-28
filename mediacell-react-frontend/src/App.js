@@ -29,7 +29,9 @@ function App() {
 
   return (
     <div className="App">
+      <h2>MediaCell Search</h2>
       <Search performCodewordSearch={performCodewordSearch} performActionSearch={performActionSearch}/>
+      <h2>Search Results</h2>
       <SearchResults results={results}/>
     </div>
   );

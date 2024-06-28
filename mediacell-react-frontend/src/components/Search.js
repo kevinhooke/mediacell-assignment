@@ -1,8 +1,8 @@
 import { useState } from 'react';
 
 function Search(props) {
-    const [codeword, setCodeword] = useState();
-    const [actionId, setActionId] = useState();
+    const [codeword, setCodeword] = useState("");
+    const [actionId, setActionId] = useState("");
 
     function handleCodewordOnChange(e){
         setCodeword(e.target.value)

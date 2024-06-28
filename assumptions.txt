@@ -1,0 +1,6 @@
+- actions.json file has an invalid trailing ',' on the codeword=5001 element, which cannot be
+parsed, so has been removed in the copy of the file used here
+
+- actions.json codeword and id elements appear to be reversed, id should probably be the numeric unique value,
+and codeword should probably be the string value. This implementation has left the example file as is, apart from
+the removal of the invalid trailing ','
