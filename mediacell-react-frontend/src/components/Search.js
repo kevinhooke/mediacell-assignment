@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-function Search() {
+function Search(props) {
     const [codeword, setCodeword] = useState();
     const [actionId, setActionId] = useState();
 
@@ -12,24 +12,15 @@ function Search() {
         setActionId(e.target.value)
     }
     
-    let handleClick = async () => {
-        let response = null;
-        let result = null;
-
-        console.log('button clicked');
+    let handleSearchButtonClick = async () => {
+        console.log('handleSearchButtonClick clicked');
     
         if(actionId){
-            //TODO: externalize url to a properties file
-            response = await fetch('http://127.0.0.1:3000/actions/action/' + actionId);
-            result = await response.json();
+            props.performActionSearch(actionId);
         }
         else{
-            //TODO: externalize url to a properties file
-            response = await fetch('http://127.0.0.1:3000/actions/codeword/' + codeword);
-            result = await response.json();
+            props.performCodewordSearch(codeword);
         }
-        //TODO: update state results here
-        console.log(result);
       }
 
 
@@ -37,7 +28,7 @@ function Search() {
         <div>
             <label>Codeword Id: </label><input name="codeword" type="text" value={codeword} onChange={handleCodewordOnChange}/>
             <label>Action Id: </label><input name="actionid" type="text" value={actionId} onChange={handleActionOnChange}/>
-            <button name="search" onClick={handleClick}>Search</button>
+            <button name="search" onClick={handleSearchButtonClick}>Search</button>
         </div>
     )
 }
